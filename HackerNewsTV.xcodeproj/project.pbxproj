@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65866E882276534300FD9F2C /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 65866E872276534300FD9F2C /* screenshot.png */; };
 		65FF62B62274EEEB00685455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62B52274EEEB00685455 /* AppDelegate.swift */; };
 		65FF62BD2274EEEB00685455 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FF62BB2274EEEB00685455 /* Main.storyboard */; };
 		65FF62BF2274EEEE00685455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FF62BE2274EEEE00685455 /* Assets.xcassets */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65866E86227651A700FD9F2C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65866E872276534300FD9F2C /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 		65FF62B22274EEEB00685455 /* HackerNewsTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FF62B52274EEEB00685455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65FF62BC2274EEEB00685455 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +64,8 @@
 		65FF62A92274EEEB00685455 = {
 			isa = PBXGroup;
 			children = (
+				65866E872276534300FD9F2C /* screenshot.png */,
+				65866E86227651A700FD9F2C /* README.md */,
 				65FF62B42274EEEB00685455 /* HackerNewsTV */,
 				65FF62C82274EEEE00685455 /* HackerNewsTVTests */,
 				65FF62B32274EEEB00685455 /* Products */,
@@ -106,6 +111,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65FF62CE2274EEEE00685455 /* Build configuration list for PBXNativeTarget "HackerNewsTV" */;
 			buildPhases = (
+				65866E8522764E5100FD9F2C /* Swiftformat */,
 				65FF62AE2274EEEB00685455 /* Sources */,
 				65FF62AF2274EEEB00685455 /* Frameworks */,
 				65FF62B02274EEEB00685455 /* Resources */,
@@ -181,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FF62BF2274EEEE00685455 /* Assets.xcassets in Resources */,
+				65866E882276534300FD9F2C /* screenshot.png in Resources */,
 				65FF62BD2274EEEB00685455 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +200,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		65866E8522764E5100FD9F2C /* Swiftformat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftformat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswiftformat . --swiftversion 5\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65FF62AE2274EEEB00685455 /* Sources */ = {

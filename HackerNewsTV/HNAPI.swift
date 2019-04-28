@@ -8,23 +8,28 @@
 
 import Foundation
 
+// A news story on HN.
 struct HNItem {
     var title: String?
-    var url : URL?
-    var point : Int?
+    var url: URL?
+    var point: Int?
 }
 
+// An abstraction to the Hacker News APIs.
 class HNAPI {
-    
-    func getItems(limit: Int, completion: @escaping ([HNItem]?, Error?)->()) {
-        getTopIds(limit: limit, completion: { (ids, err) in
+    /// Fetches `limit` items from the Hacker News API.
+    /// - Parameters:
+    ///     - limit: Number of news stories to fetch
+    ///     - completion: Completion handler
+    func getItems(limit: Int, completion: @escaping ([HNItem]?, Error?) -> Void) {
+        getTopIds(limit: limit, completion: { ids, err in
             if err != nil {
                 completion(nil, err)
             }
             var acc = [HNItem]()
             let group = DispatchGroup()
             for id in ids! {
-                self.getItemWithId(group: group, id: id, completion: { (item, err) in
+                self.getItemWithId(group: group, id: id, completion: { item, err in
                     if err != nil {
                         return
                     }
@@ -37,12 +42,16 @@ class HNAPI {
             })
         })
     }
-    
-    private func getTopIds(limit: Int, completion: @escaping ([Int]?, Error?)->()) {
+
+    /// Fetches `limit` IDs of top news stories from the Hacker News API.
+    /// - Parameters:
+    ///     - limit: Number of IDs to fetch
+    ///     - completion: Completion handler
+    private func getTopIds(limit: Int, completion: @escaping ([Int]?, Error?) -> Void) {
         let endpoint = URL(string: "https://hacker-news.firebaseio.com/v0/topstories.json")
         let request = URLRequest(url: endpoint!)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if (error != nil || data == nil || data!.count < 1 || response == nil) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil || data == nil || data!.count < 1 || response == nil {
                 completion(nil, error!)
             }
             let json = try? JSONSerialization.jsonObject(with: data!, options: [])
@@ -54,14 +63,21 @@ class HNAPI {
             }
         }.resume()
     }
-    
-    private func getItemWithId(group: DispatchGroup, id: Int, completion: @escaping (HNItem?, Error?)->()) {
+
+    /// Fetches the news item with given `id` from the Hacker News API.
+    /// Must run as part of a `DispatchGroup` to allow for multiple HTTP requests
+    /// to be made at the same time.
+    /// - Parameters:
+    ///     - group: `DispatchGroup` to enter and leave
+    ///     - id: the news item to fetch
+    ///     - completion: completion handler
+    private func getItemWithId(group: DispatchGroup, id: Int, completion: @escaping (HNItem?, Error?) -> Void) {
         group.enter()
-        let endpoint = URL(string: "https://hacker-news.firebaseio.com/v0/item/"+String(id)+".json")
+        let endpoint = URL(string: "https://hacker-news.firebaseio.com/v0/item/" + String(id) + ".json")
         let request = URLRequest(url: endpoint!)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             defer { group.leave() }
-            if (error != nil || data == nil || data!.count < 1 || response == nil) {
+            if error != nil || data == nil || data!.count < 1 || response == nil {
                 completion(nil, error!)
                 return
             }
@@ -99,14 +115,19 @@ class HNAPI {
                 completion(nil, NSError(domain: "hnapi", code: 101, userInfo: nil))
                 return
             }
-         }.resume()
+        }.resume()
     }
-    
-    func extractURL(url: String, completion: @escaping (String?, Error?)->()) {
-        let endpoint = URL(string: "https://boilerpipe-web.appspot.com/extract?url="+url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!+"&extractor=ArticleExtractor&output=text&extractImages=&token=")
+
+    /// Fetches a text-only version of the webpage contents located at `url`.
+    /// - Parameters:
+    ///     - url: webpage to convert to text
+    ///     - completion: Completion handler
+    /// - Todo: Find an API that works better (and which possibly scales well)
+    func extractURL(url: String, completion: @escaping (String?, Error?) -> Void) {
+        let endpoint = URL(string: "https://boilerpipe-web.appspot.com/extract?url=" + url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)! + "&extractor=ArticleExtractor&output=text&extractImages=&token=")
         let request = URLRequest(url: endpoint!)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if (error != nil || data == nil || data!.count < 1 || response == nil) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil || data == nil || data!.count < 1 || response == nil {
                 completion(nil, error!)
             }
             let text = String(data: data!, encoding: .utf8)
@@ -115,7 +136,6 @@ class HNAPI {
             } else {
                 completion(nil, NSError(domain: "hnapi", code: 106, userInfo: nil))
             }
-            }.resume()
+        }.resume()
     }
-    
 }
