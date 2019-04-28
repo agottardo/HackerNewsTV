@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		65FF62B62274EEEB00685455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62B52274EEEB00685455 /* AppDelegate.swift */; };
-		65FF62B82274EEEB00685455 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62B72274EEEB00685455 /* FirstViewController.swift */; };
-		65FF62BA2274EEEB00685455 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62B92274EEEB00685455 /* SecondViewController.swift */; };
 		65FF62BD2274EEEB00685455 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FF62BB2274EEEB00685455 /* Main.storyboard */; };
 		65FF62BF2274EEEE00685455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FF62BE2274EEEE00685455 /* Assets.xcassets */; };
 		65FF62CA2274EEEE00685455 /* HackerNewsTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62C92274EEEE00685455 /* HackerNewsTVTests.swift */; };
+		65FF62D52274F0B100685455 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62D42274F0B100685455 /* HomeTableViewController.swift */; };
+		65FF62D72274F1F800685455 /* HNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62D62274F1F800685455 /* HNAPI.swift */; };
+		65FF62D9227505DF00685455 /* ReadStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF62D8227505DF00685455 /* ReadStoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +29,15 @@
 /* Begin PBXFileReference section */
 		65FF62B22274EEEB00685455 /* HackerNewsTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FF62B52274EEEB00685455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65FF62B72274EEEB00685455 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		65FF62B92274EEEB00685455 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		65FF62BC2274EEEB00685455 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65FF62BE2274EEEE00685455 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65FF62C02274EEEE00685455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FF62C52274EEEE00685455 /* HackerNewsTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackerNewsTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FF62C92274EEEE00685455 /* HackerNewsTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsTVTests.swift; sourceTree = "<group>"; };
 		65FF62CB2274EEEE00685455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65FF62D42274F0B100685455 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		65FF62D62274F1F800685455 /* HNAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNAPI.swift; sourceTree = "<group>"; };
+		65FF62D8227505DF00685455 /* ReadStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				65FF62B52274EEEB00685455 /* AppDelegate.swift */,
-				65FF62B72274EEEB00685455 /* FirstViewController.swift */,
-				65FF62B92274EEEB00685455 /* SecondViewController.swift */,
+				65FF62D42274F0B100685455 /* HomeTableViewController.swift */,
 				65FF62BB2274EEEB00685455 /* Main.storyboard */,
 				65FF62BE2274EEEE00685455 /* Assets.xcassets */,
 				65FF62C02274EEEE00685455 /* Info.plist */,
+				65FF62D62274F1F800685455 /* HNAPI.swift */,
+				65FF62D8227505DF00685455 /* ReadStoryViewController.swift */,
 			);
 			path = HackerNewsTV;
 			sourceTree = "<group>";
@@ -196,9 +199,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FF62BA2274EEEB00685455 /* SecondViewController.swift in Sources */,
+				65FF62D9227505DF00685455 /* ReadStoryViewController.swift in Sources */,
+				65FF62D72274F1F800685455 /* HNAPI.swift in Sources */,
+				65FF62D52274F0B100685455 /* HomeTableViewController.swift in Sources */,
 				65FF62B62274EEEB00685455 /* AppDelegate.swift in Sources */,
-				65FF62B82274EEEB00685455 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
